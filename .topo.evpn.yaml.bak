@@ -1,0 +1,47 @@
+name: evpn-fabric
+topology:
+  nodes:
+    spine1:
+      kind: linux
+      image: networkop/cx
+      exec:
+        - ip link set eth1 up
+        - ip addr add 172.20.20.3/24 dev eth1
+        - ip link set eth2 up
+        - ip addr add 172.20.20.4/24 dev eth2
+
+    leaf1:
+          kind: linux
+          image: networkop/cx
+          exec:
+            - ip link set eth1 up
+            - ip addr flush dev eth1
+            - ip addr add 172.20.20.5/24 dev eth1
+            - sleep 5
+            - ip link add vxlan100 type vxlan id 100 local 172.20.20.5 remote 172.20.20.6 dev eth1 dstport 4789
+            - ip link set vxlan100 up
+            - sleep 2 
+            - ip addr flush dev vxlan100
+            - ip addr add 10.100.0.1/24 dev vxlan100
+            - ip link set vxlan100 up
+
+    leaf2:
+          kind: linux
+          image: networkop/cx
+          exec:
+            - ip link set eth1 up
+            - ip addr flush dev eth1
+            - ip addr add 172.20.20.6/24 dev eth1
+            - ip route replace 172.20.20.3/32 dev eth1
+            - sleep 5
+            - ip link add vxlan100 type vxlan id 100 local 172.20.20.6 remote 172.20.20.5 dev eth1 dstport 4789
+            - ip link set vxlan100 up
+            - sleep 2
+            - ip addr flush dev vxlan100
+            - ip addr add 10.100.0.2/24 dev vxlan100
+            - ip link set vxlan100 up 
+
+  links:
+        # underlay links
+        - endpoints: ["spine1:eth1", "leaf1:eth1"]
+        - endpoints: ["spine1:eth2", "leaf2:eth1"]

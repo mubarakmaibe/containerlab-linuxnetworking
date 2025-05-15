@@ -1,0 +1,12 @@
+name: basic
+topology:
+  nodes:
+    r1:
+      kind: linux
+      image: frrouting/frr
+
+    r2:
+      kind: linux
+      image: frrouting/frr
+  links:
+    - endpoints: ["r1:eth1", "r2:eth1"]

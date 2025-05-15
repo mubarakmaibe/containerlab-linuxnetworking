@@ -1,0 +1,100 @@
+{
+  "name": "basic",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-f44dd073b88e",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "r1": {
+      "index": "0",
+      "shortname": "r1",
+      "longname": "clab-basic-r1",
+      "fqdn": "r1.basic.io",
+      "group": "",
+      "labdir": "/home/mohmaibe/clab-basics/clab-basic/r1",
+      "kind": "linux",
+      "image": "frrouting/frr",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f44dd073b88e",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mohmaibe/clab-basics/clab-basic/r1",
+        "clab-node-longname": "clab-basic-r1",
+        "clab-node-name": "r1",
+        "clab-node-type": "",
+        "clab-owner": "mohmaibe",
+        "clab-topo-file": "/home/mohmaibe/clab-basics/topo.yaml",
+        "containerlab": "basic"
+      },
+      "port-bindings": [
+      ]
+    },
+    "r2": {
+      "index": "1",
+      "shortname": "r2",
+      "longname": "clab-basic-r2",
+      "fqdn": "r2.basic.io",
+      "group": "",
+      "labdir": "/home/mohmaibe/clab-basics/clab-basic/r2",
+      "kind": "linux",
+      "image": "frrouting/frr",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f44dd073b88e",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mohmaibe/clab-basics/clab-basic/r2",
+        "clab-node-longname": "clab-basic-r2",
+        "clab-node-name": "r2",
+        "clab-node-type": "",
+        "clab-owner": "mohmaibe",
+        "clab-topo-file": "/home/mohmaibe/clab-basics/topo.yaml",
+        "containerlab": "basic"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "r1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:7b:10:07",
+        "peer": "z"
+      },
+      "z": {
+        "node": "r2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:a9:ba:3d",
+        "peer": "a"
+      }
+    }
+  ]
+}

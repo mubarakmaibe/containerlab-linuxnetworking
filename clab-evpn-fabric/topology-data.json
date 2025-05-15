@@ -1,0 +1,145 @@
+{
+  "name": "evpn-fabric",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-563965f4199b",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "leaf1": {
+      "index": "0",
+      "shortname": "leaf1",
+      "longname": "clab-evpn-fabric-leaf1",
+      "fqdn": "leaf1.evpn-fabric.io",
+      "group": "",
+      "labdir": "/home/mohamaibe/clab-basics/clab-evpn-fabric/leaf1",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-563965f4199b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mohamaibe/clab-basics/clab-evpn-fabric/leaf1",
+        "clab-node-longname": "clab-evpn-fabric-leaf1",
+        "clab-node-name": "leaf1",
+        "clab-node-type": "",
+        "clab-owner": "mohamaibe",
+        "clab-topo-file": "/home/mohamaibe/clab-basics/topo-evpn.yaml",
+        "containerlab": "evpn-fabric"
+      },
+      "port-bindings": [
+      ]
+    },
+    "leaf2": {
+      "index": "1",
+      "shortname": "leaf2",
+      "longname": "clab-evpn-fabric-leaf2",
+      "fqdn": "leaf2.evpn-fabric.io",
+      "group": "",
+      "labdir": "/home/mohamaibe/clab-basics/clab-evpn-fabric/leaf2",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-563965f4199b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mohamaibe/clab-basics/clab-evpn-fabric/leaf2",
+        "clab-node-longname": "clab-evpn-fabric-leaf2",
+        "clab-node-name": "leaf2",
+        "clab-node-type": "",
+        "clab-owner": "mohamaibe",
+        "clab-topo-file": "/home/mohamaibe/clab-basics/topo-evpn.yaml",
+        "containerlab": "evpn-fabric"
+      },
+      "port-bindings": [
+      ]
+    },
+    "spine1": {
+      "index": "2",
+      "shortname": "spine1",
+      "longname": "clab-evpn-fabric-spine1",
+      "fqdn": "spine1.evpn-fabric.io",
+      "group": "",
+      "labdir": "/home/mohamaibe/clab-basics/clab-evpn-fabric/spine1",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-563965f4199b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mohamaibe/clab-basics/clab-evpn-fabric/spine1",
+        "clab-node-longname": "clab-evpn-fabric-spine1",
+        "clab-node-name": "spine1",
+        "clab-node-type": "",
+        "clab-owner": "mohamaibe",
+        "clab-topo-file": "/home/mohamaibe/clab-basics/topo-evpn.yaml",
+        "containerlab": "evpn-fabric"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "spine1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:6a:6c:44",
+        "peer": "z"
+      },
+      "z": {
+        "node": "leaf1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:a7:71:38",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "spine1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:d7:39:60",
+        "peer": "z"
+      },
+      "z": {
+        "node": "leaf2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:ef:3c:cf",
+        "peer": "a"
+      }
+    }
+  ]
+}
