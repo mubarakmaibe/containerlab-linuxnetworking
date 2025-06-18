@@ -1,7 +1,8 @@
 # 🚀 EVPN-Fabric: BGP + VXLAN Data Center Topology (Containerlab)
 
 # BEFORE ALL THE A.I SLOP READ THIS FIRST
-!!! UPDATE THERE'S A FOLDER WITH FULL BGP-EVPN FUNCTIONALITY NOT MUCH ELSE TO SAY I'LL TRY TO UPLOAD THE TOPOLOGY
+!!! UPDATE THERE'S A FOLDER WITH FULL BGP-EVPN FUNCTIONALITY NOT MUCH ELSE TO SAY, I'LL TRY TO UPLOAD THE TOPOLOGY !!!
+
 Lab would probably not run as it should when you deploy. some interfaces might be misconfigured or routes that need to be added. just make sure each NODE can reach EVERY single address network it needs to.
 That's the only issue, I've added daemons and edited to say xxx=yes when needed. If its your first time using Containerlab be patient, your issue is probabaly much smaller than you think (well sometimes). The Vxlan-setup.sh is a shell script that was meant to be deployed after deploying the lab itself but my current setup has the vxlan already setup in the main .yaml, could come in handy.
 
